@@ -1,0 +1,35 @@
+---
+# defaults file for packages
+packages_packages:
+  - htop
+  - mc
+  - wget
+  - git
+  - curl
+  - nnn
+  - gnuplot
+  - oathtool
+  - maven
+  - vim
+  - neovim
+  - lm_sensors
+  - fish
+  - kate
+  - kdiff3
+  - tree
+  - virt-manager
+  - krusader
+  - uget
+  - wireshark
+  - iftop
+  - gh
+
+packages_rpm_keys:
+  #  free
+  - key: https://mirrors.rpmfusion.org/keys?action=AttachFile&do=get&target=RPM-GPG-KEY-rpmfusion-free-fedora
+  #  non-free
+  - key: https://mirrors.rpmfusion.org/keys?action=AttachFile&do=get&target=RPM-GPG-KEY-rpmfusion-nonfree-fedora
+
+packages_repositories:
+  - https://mirrors.rpmfusion.org/free/fedora/rpmfusion-free-release-{{ ansible_facts['distribution_major_version'] }}.noarch.rpm
+  - https://mirrors.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-{{ ansible_facts['distribution_major_version'] }}.noarch.rpm

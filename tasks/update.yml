@@ -1,19 +1,16 @@
 ---
-- name: Update all packages on Fedora Linux
-  hosts: all
-  become: true
-  tasks:
-    - block:
-        - name: Ensure all packages are up-to-date
-          ansible.builtin.dnf:
-            name: "*"
-            state: latest
-            update_only: true
-      rescue:
-        - name: Log an error if the update fails
-          ansible.builtin.debug:
-            msg: "Package update failed."
-      always:
-        - name: Notify that the update process is complete
-          ansible.builtin.debug:
-            msg: "Package update task finished."
+- name: Update all packages
+  block:
+    - name: Ensure all packages are up-to-date
+      ansible.builtin.dnf:
+        name: "*"
+        state: latest
+        update_only: true
+  rescue:
+    - name: Log an error if the update fails
+      ansible.builtin.debug:
+        msg: "Package update failed."
+  always:
+    - name: Notify that the update process is complete
+      ansible.builtin.debug:
+        msg: "Package update task finished."

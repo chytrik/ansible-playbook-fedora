@@ -1,0 +1,17 @@
+---
+- name: Import RPM GPG keys
+  ansible.builtin.rpm_key:
+    state: present
+    key: "{{ item }}"
+  loop: "{{ packages_rpm_keys }}"
+
+- name: Enable RPM Fusion free repository
+  ansible.builtin.dnf:
+    name: "{{ item }}"
+    state: present
+  loop: "{{ packages_repositories }}"
+
+- name: Install essential packages
+  ansible.builtin.dnf:
+    name: "{{ packages_packages }}"
+    state: present
