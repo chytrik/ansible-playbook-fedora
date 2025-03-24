@@ -1,0 +1,19 @@
+---
+- name: Basic setup for Fedora laptop
+  hosts: localhost
+  become: true
+  tasks:
+    - name: Include role packages
+      ansible.builtin.include_role:
+        name: packages
+
+    - name: Install essential packages
+      ansible.builtin.import_tasks: tasks/packages.yml
+
+    - name: Ensure Fish shell config is up-to-date
+      ansible.builtin.copy:
+        src: files/config/fish
+        dest: ~/.config/fish
+        owner: "{{ ansible_user_id }}"
+        group: "{{ ansible_user_gid }}"
+        mode: "0644"

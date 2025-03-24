@@ -1,0 +1,27 @@
+---
+- name: Install essential packages
+  ansible.builtin.dnf:
+    name:
+      - htop
+      - mc
+      - wget
+      - git
+      - curl
+      - nnn
+      - gnuplot
+      - oathtool
+      - maven
+      - vim
+      - neovim
+      - lm_sensors
+      - fish
+      - kate
+      - kdiff3
+      - tree
+      - virt-manager
+      - krusader
+      - uget
+      - wireshark
+      - iftop
+      - gh
+    state: present
